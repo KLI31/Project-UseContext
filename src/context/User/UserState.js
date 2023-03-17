@@ -1,8 +1,9 @@
-import React from 'react';
-import { useReducer } from 'react';
-import UseReducer from './UserReducer';
-import UserContext from './UserContext';
-import axios from 'axios';
+import React from "react";
+import { useReducer } from "react";
+import UseReducer from "./UserReducer";
+import UserContext from "./UserContext";
+import axios from "axios";
+import { GET_PROFILE, GET_USER } from "../types";
 
 const UserState = ({ children }) => {
   const initialValues = {
@@ -13,13 +14,19 @@ const UserState = ({ children }) => {
   const [state, dispatch] = useReducer(UseReducer, initialValues);
 
   const getUser = async () => {
-    const res = await axios.get('https://reqres.in/api/users');
-    console.log('===> ', res);
+    const res = await axios.get("https://reqres.in/api/users");
+    dispatch({
+      type: GET_USER,
+      payload: res.data.data,
+    });
   };
 
   const getProfile = async (id) => {
-    const res = await axios.get('https://reqres.in/api/users/' + id);
-    console.log(res);
+    const acc = await axios.get("https://reqres.in/api/users/" + id);
+    dispatch({
+      type: GET_PROFILE,
+      payload: acc.data.data,
+    });
   };
 
   return (
