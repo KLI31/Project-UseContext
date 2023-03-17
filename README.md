@@ -1,3 +1,5 @@
 # Project-UseContext
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-hpjv59)
+# Projecto para entende el tema del useContext en react
+
+- Proximas actualizaciones
